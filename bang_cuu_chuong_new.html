@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng cửu chương</title>
+</head>
+<body>
+<script>
+    let rowNumber=parseInt(prompt("Nhập số hàng: "));
+    let columnNumber=parseInt(prompt("Nhập số cột: "));
+    function columnHeader(y) {// Hàm tạo tiêu đề của Cột có dạng: <th>...</th>
+        let result1="";
+        for (k = 1; k <= y; k++) {
+            result1+="<th>" +k +"</th>>";
+        }
+        return result1;
+    }
+    function rowDefine(x,y) { // Hàm tạo định dạng của các ô trong 1 hàng
+        //Ô trong <table> cần có dạng <td>i * x= ...</td>, biến x đại diện cho hàng, colunm đại diện cho số cột
+        result2 = "";//Khởi tạo kết quả của hàm
+        for (i = 1; i <=y ; i++) {
+            result2 += '<td> ' + i + ' x ' + x +'=' + i*x+ ' </td>';
+        }
+        return result2;
+    }
+
+    console.log(rowDefine(2));
+
+    function tableDefine(x) { //Hàm tạo định dạng của các hàng trong bảng
+        result3 = "<tr>"+columnHeader(columnNumber)+"</tr>";// Khởi tạo biến kết quả với hàng tiêu đề
+        for (j = 1; j <= x; j++) {
+            result3 += "<tr>" + rowDefine(j,columnNumber) + " </tr>";
+        }
+        return result3;
+    }
+
+    // console.log(rowDefine(2));
+    let tableCss = '<table border="1" cellspacing="0" cellpadding="15px"><caption><h1>Bảng Cửu Chương</h1></caption>';
+    document.write(tableCss + tableDefine(rowNumber) + "</table>");
+</script>
+<style>
+    td {
+        text-align: center;
+    }
+
+</style>
+</body>
+</html>
